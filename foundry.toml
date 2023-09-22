@@ -1,0 +1,13 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
+remappings = [
+    "@openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+    "@chainlink/=lib/chainlink-brownie-contracts/contracts",
+]
+
+[rpc_endpoints]
+# mainnet = "https://mainnet.infura.io/v3/${process.env.API_KEY?process.env.API_KEY:''}"

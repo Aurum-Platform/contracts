@@ -1,0 +1,12 @@
+{
+    "extends": "solhint:recommended",
+    "rules": { 
+    "compiler-version": "off",       
+    "reentrancy": "warn",
+    "avoid-throw": "warn",
+    "func-visibility": ["warn",{"ignoreConstructors":true}],
+    "mark-callable-contracts": "warn",
+    "multiple-sends": "warn",
+    "no-complex-fallback": "warn"
+    }
+  }
