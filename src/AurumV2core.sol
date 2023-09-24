@@ -9,7 +9,7 @@ import {IERC165} from "@openzeppelin-contracts/utils/introspection/IERC165.sol";
 import {NFTPrice} from "./NFTPrice.sol";
 import {AurumAdmin} from "./AurumAdmin.sol";
 import {NFTEscrow} from "./NFTEscrow.sol";
-import {IAurumV2core} from "src/interface/IAurumV2core.sol";
+import {IAurumV2core} from "./interface/IAurumV2core.sol";
 
 contract AurumV2core is AurumAdmin, NFTEscrow, NFTPrice, IAurumV2core {
     /**
@@ -252,7 +252,7 @@ contract AurumV2core is AurumAdmin, NFTEscrow, NFTPrice, IAurumV2core {
     /**
      * @dev See {IAurumV2core-getCollateralValue}.
      */
-    function getCollateralValue(address tokenContract_, uint256 tokenId_) public view returns (uint256) {
+    function getCollateralValue(address tokenContract_, uint256 tokenId_) public returns (uint256) {
         // Get the price of the ERC721 token
         uint256 price = getNFTPrice(tokenContract_, tokenId_);
 
@@ -267,7 +267,7 @@ contract AurumV2core is AurumAdmin, NFTEscrow, NFTPrice, IAurumV2core {
     /**
      * @dev Adds Aurum Client address to Aurum.
      */
-    function setAurumClien(address aurumClientContract_) public onlyOwner {
+    function setAurumClient(address aurumClientContract_) public onlyOwner {
         require(aurumClientContract_ != address(0), "Invalid Aurum Client address");
         require(aurumClientContract == aurumClientContract, "Aurum Client address already set");
         aurumClientContract = aurumClientContract_;

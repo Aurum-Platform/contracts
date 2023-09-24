@@ -188,7 +188,7 @@ interface IAurumV2core {
      * @param tokenId_ Id of the ERC721 token.
      * @return Collateral value of the token.
      */
-    function getCollateralValue(address tokenContract_, uint256 tokenId_) external view returns (uint256);
+    function getCollateralValue(address tokenContract_, uint256 tokenId_) external returns (uint256);
 
     // View Functions
 

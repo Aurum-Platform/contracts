@@ -58,7 +58,7 @@ interface INFTPrice {
      * @param tokenId The ID of the NFT within the token contract.
      * @return The price of the NFT in wei.
      */
-    function getNFTPrice(address _tokenContract, uint256 tokenId) external view returns (uint256);
+    function getNFTPrice(address _tokenContract, uint256 tokenId) external returns (uint256);
 
     /**
      * @notice Get the ETH to USD price.

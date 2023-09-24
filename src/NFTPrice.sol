@@ -3,8 +3,8 @@ pragma solidity 0.8.19;
 
 import {AggregatorV3Interface} from "@chainlink/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import {ERC721} from "@openzeppelin-contracts/token/ERC721/ERC721.sol";
-import {AurumCLient} from "src/client/AurumClient.sol";
-import {INFTPrice} from "src/interface/INFTPrice.sol";
+import {AurumClient} from "./client/AurumClient.sol";
+import {INFTPrice} from "./interface/INFTPrice.sol";
 
 contract NFTPrice is INFTPrice {
     /**
@@ -25,7 +25,7 @@ contract NFTPrice is INFTPrice {
     /**
      * @dev See {INFTPrice-getNFTPrice}.
      */
-    function getNFTPrice(address _tokenContract, uint256 tokenId) public view returns (uint256) {
+    function getNFTPrice(address _tokenContract, uint256 tokenId) public returns (uint256) {
         ERC721 nftContract = ERC721(_tokenContract);
         address owner = nftContract.ownerOf(tokenId);
 
@@ -51,9 +51,9 @@ contract NFTPrice is INFTPrice {
      */
 
     // Internal function to get the price from the price feed contract
-    function _getNFTPrice(address _tokenContract) internal view returns (uint256) {
-        AurumCLient client = AurumCLient(AURUMORACLE_PRICEFEED);
-        (uint256 price, ) = client.getFloorPrice(_tokenContract);
+    function _getNFTPrice(address _tokenContract) internal returns (uint256) {
+        AurumClient client = AurumClient(aurumClientContract);
+        uint256 price = client.getFloorPrice(_tokenContract);
         return (price);
     }
 }

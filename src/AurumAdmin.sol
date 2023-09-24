@@ -2,7 +2,7 @@
 pragma solidity 0.8.19;
 
 import {Ownable} from "@openzeppelin-contracts/access/Ownable.sol";
-import {IAurumAdmin} from "src/interface/IAurumAdmin.sol";
+import {IAurumAdmin} from "./interface/IAurumAdmin.sol";
 
 contract AurumAdmin is IAurumAdmin, Ownable {
     /**

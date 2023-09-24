@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-import "@chainlink/src/v0.8/ChainlinkClient.sol";
-import "@chainlink/src/v0.8/ConfirmedOwner.sol";
+import "@chainlink/src/v0.8/dev/ChainlinkClient.sol";
+import "@chainlink/src/v0.8/dev/ConfirmedOwner.sol";
 
 /**
  * @title AurumCLient
  * @dev API consumer contract to get floor price from oracle
  */
 
-contract AurumCLient is ChainlinkClient, ConfirmedOwner {
+contract AurumClient is ChainlinkClient, ConfirmedOwner {
     using Chainlink for Chainlink.Request;
     address public oracle;
     string public jobId;
@@ -27,7 +27,7 @@ contract AurumCLient is ChainlinkClient, ConfirmedOwner {
     event RequestFloorPrice(bytes32 indexed requestId, uint256 floorPrice);
 
     modifier ownerOrAurumAddress {
-        require(msg.sender == owner || msg.sender == aurumAddress, "Not Allowed");
+        require(msg.sender == owner() || msg.sender == aurumAddress, "Not Allowed");
         _;
     }
 
@@ -48,13 +48,13 @@ contract AurumCLient is ChainlinkClient, ConfirmedOwner {
      * @param _tokenAddress The address of the token to get the floor price for.
      * @return The floor price of the token.
      */
-    function getFloorPrice(address _tokenAddress) public returns(FloorPrice memory) {
+    function getFloorPrice(address _tokenAddress) public returns(uint256) {
         if(tokenToFloorPrice[_tokenAddress].deadline >  block.timestamp) {
-            return tokenToFloorPrice[_tokenAddress];
+            return tokenToFloorPrice[_tokenAddress].floorPrice;
         }
 
         requestPrice(_tokenAddress);
-        return tokenToFloorPrice[_tokenAddress];
+        return tokenToFloorPrice[_tokenAddress].floorPrice;
     }
 
     /**
@@ -101,7 +101,7 @@ contract AurumCLient is ChainlinkClient, ConfirmedOwner {
         int256 toWeiAmount = 10 ** 18;
         req.addInt("times", toWeiAmount);
 
-        sendOperatorRequestTo(oracle, req, ORACLE_PAYMENT);
+        sendChainlinkRequestTo(oracle, req, ORACLE_PAYMENT);
     }
 
     /**
