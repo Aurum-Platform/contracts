@@ -3,4 +3,3 @@ solmate/=lib/solmate/src/
 ds-test/=lib/forge-std/lib/ds-test/src/
 @openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/
 @chainlink=lib/chainlink-brownie-contracts/contracts
-AurumClient=node_modules/aurumclient/
