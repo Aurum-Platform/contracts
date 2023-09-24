@@ -2,7 +2,10 @@ import fs from "fs";
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "hardhat-preprocessor";
+import dotenv from 'dotenv';
 import { HardhatUserConfig, task } from "hardhat/config";
+
+dotenv.config();
 
 import example from "./tasks/example";
 
