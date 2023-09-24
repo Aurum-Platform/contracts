@@ -14,7 +14,6 @@ contract AurumOracle {
      * @param deadline The Unix timestamp (in seconds) after which the packet
      *        should be rejected by the contract
      * @param payload The payload of the packet
-     * @param signaure ECDSA signature of sender
      */
     struct PricePacket {
         bytes32 request;

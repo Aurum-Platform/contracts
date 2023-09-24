@@ -263,4 +263,13 @@ contract AurumV2core is AurumAdmin, NFTEscrow, NFTPrice, IAurumV2core {
             revert UnsupportedTokenType(type(IERC165).interfaceId);
         }
     }
+
+    /**
+     * @dev Adds Aurum Client address to Aurum.
+     */
+    function setAurumClien(address aurumClientContract_) public onlyOwner {
+        require(aurumClientContract_ != address(0), "Invalid Aurum Client address");
+        require(aurumClientContract == aurumClientContract, "Aurum Client address already set");
+        aurumClientContract = aurumClientContract_;
+    }
 }

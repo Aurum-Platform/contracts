@@ -4,6 +4,8 @@ out/
 
 # JS
 node_modules/
+*.lockb
+package-lock.json/
 
 #Hardhat files
 cache_hardhat/

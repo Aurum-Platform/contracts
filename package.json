@@ -1,5 +1,5 @@
 {
-  "name": "hardhat-foundry-template",
+  "name": "Aurum-Protocol-Contracts",
   "version": "1.0.0",
   "description": "The harmony between Foundry and Hardhat.",
   "directories": {
@@ -9,7 +9,7 @@
   "scripts": {
     "solhint": "solhint \"./src/**/*.sol\""
   },
-  "author": "Devan Non <devanon@chainstride.capital>",
+  "author": "Krieger",
   "license": "Apache-2.0",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",
@@ -27,7 +27,8 @@
     "solhint": "^3.4.1",
     "ts-node": "^10.7.0",
     "typechain": "^8.0.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "aurumclient": "github:Aurum-Platform/external-adapter.git"
   },
   "dependencies": {
     "@chainlink/hardhat-chainlink": "^0.0.2",
